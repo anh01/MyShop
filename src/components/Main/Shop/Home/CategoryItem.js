@@ -12,7 +12,7 @@ class CategoryItem extends Component {
         const { image, id, name } = this.props.category;
         return (
             <TouchableOpacity onPress={() => this.goToListProduct(id)}>
-                <Image style={imageStyle} source={{ uri: `http://localhost:3000/${image}` }}>
+                <Image style={imageStyle} source={{ uri: `http://app.nhodalat.com/image/types/${image}` }}>
                     <Text style={textStyle}>{name}</Text>
                 </Image>
             </TouchableOpacity>

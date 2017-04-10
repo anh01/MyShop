@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image, TouchableOpacity, Text, Dimensions, StyleSheet } from 'react-native';
 
-const url = 'http://localhost:3000/';
+const url = 'http://app.nhodalat.com/image/';
 
 class SearchPageItem extends Component {
     gotoDetail(product) {
@@ -24,7 +24,7 @@ class SearchPageItem extends Component {
                     <Text style={txtMaterial}>Material {material}</Text>
                     <View style={{ flexDirection: 'row' }} >
                         <Text style={txtColor}>Color {color}</Text>
-                        <View style={{ height: 15, width: 15, backgroundColor: color, borderRadius: 15, marginLeft: 10 }} />
+                        <View style={{ height: 15, width: 15, backgroundColor: color.toLowerCase(), borderRadius: 15, marginLeft: 10 }} />
                     </View>
                     <TouchableOpacity style={showDetailContainer} onPress={() => this.gotoDetail(this.props.product)}>
                         <Text style={txtShowDetail}>SHOW DETAILS</Text>

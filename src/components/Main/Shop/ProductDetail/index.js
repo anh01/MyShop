@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 
 
-const url = 'http://localhost:3000/';
+const url = 'http://app.nhodalat.com/image/';
 const back = require('../../../../media/appIcon/back.png');
 const cart = require('../../../../media/appIcon/cartfull.png');
 
@@ -21,7 +21,7 @@ export default class ProductDetail extends Component {
             textSmoke, textHighlight, textMain, titleContainer,
             descContainer, productImageStyle, descStyle, txtMaterial, txtColor
         } = styles;
-        const { images, name, price, material, color } = this.props.product;
+        const { images, name, price, material, color, description } = this.props.product;
         const { addProduct, product } = this.props;
         return (
             <View style={wrapper}>
@@ -42,20 +42,18 @@ export default class ProductDetail extends Component {
                     <View style={footer}>
                         <View style={titleContainer}>
                             <Text style={textMain}>
-                                <Text style={textBlack}>{name}</Text>
+                                <Text style={textBlack}>{name.toUpperCase()}</Text>
                                 <Text style={textHighlight}> / </Text>
                                 <Text style={textSmoke}>{price}$</Text>
                             </Text>
                         </View>
                         <View style={descContainer}>
-                            <Text style={descStyle}>
-                                This is a man bag. For man who real, 100% man, if you are a man, who love fashion, you must buy it and have it in your collection. If you are not man, You still need to buy it, to prove others, you are a man!
-                            </Text>
+                            <Text style={descStyle}>{description}</Text>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 15 }}>
                                 <Text style={txtMaterial}>Material {material}</Text>
                                 <View style={{ flexDirection: 'row' }} >
                                     <Text style={txtColor}>Color {color}</Text>
-                                    <View style={{ height: 15, width: 15, backgroundColor: color, borderRadius: 15, marginLeft: 10, borderWidth: 1, borderColor: '#C21C70' }} />
+                                    <View style={{ height: 15, width: 15, backgroundColor: color.toLowerCase(), borderRadius: 15, marginLeft: 10, borderWidth: 1, borderColor: '#C21C70' }} />
                                 </View>
                             </View>
                         </View>

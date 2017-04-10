@@ -23,8 +23,8 @@ export default class HomePage extends Component {
             this.setState({ 
                 ...this.state, 
                 downloading: false, 
-                listCategory: res.arrCategory, 
-                listProduct: res.arrProduct 
+                listCategory: res.type, 
+                listProduct: res.product 
             });
         });
     }

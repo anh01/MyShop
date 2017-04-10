@@ -1,4 +1,4 @@
 export default () => (
-    fetch('http://localhost:3000/initData')
+    fetch('http://app.nhodalat.com/')
     .then(res => res.json())
 );

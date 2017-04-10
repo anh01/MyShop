@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image, TouchableOpacity, Text, Dimensions, StyleSheet } from 'react-native';
 
-const url = 'http://localhost:3000/';
+const url = 'http://app.nhodalat.com/image/';
 
 class CartItem extends Component {
     gotoDetail(product) {
@@ -22,7 +22,7 @@ class CartItem extends Component {
                 <Image source={{ uri: `${url}${images[0]}` }} style={productImage} />
                 <View style={[mainRight]}>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-                        <Text style={txtName}>{name}</Text>
+                        <Text style={txtName}>{name.toUpperCase()}</Text>
                         <TouchableOpacity onPress={() => remove(id)}>
                             <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>X</Text>
                         </TouchableOpacity>

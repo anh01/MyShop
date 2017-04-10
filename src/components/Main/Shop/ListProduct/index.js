@@ -18,7 +18,7 @@ class ListProduct extends Component {
         };
     }
     componentDidMount() {
-        getList(3, 1)
+        getList(4, 1)
         .then(arrProduct => this.setState({ ...this.state, dataSource: this.state.dataSource.cloneWithRows(arrProduct), mang: arrProduct }));
     }   
 
