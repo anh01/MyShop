@@ -8,25 +8,26 @@ class Menu extends Component {
         navigator.push({ name: 'AUTH' });
     }
     render() {
+        const { buttonStyle, textStyle } = styles;
         return (
             <View style={styles.menuContainer}>
                 <View style={{ padding: 20 }}>
                     <Image source={profile} style={{ width: 100, height: 100, borderRadius: 50 }} />
                 </View>  
                 <View style={{ marginBottom: 130 }}>
-                    <Text style={{ color: '#fff', fontFamily: 'Avenir', fontSize: 15 }}>Pham Truong Dang Khoa</Text>
+                    <Text style={[textStyle, { color: '#fff' }]}>Pham Truong Dang Khoa</Text>
                 </View>  
-                <TouchableOpacity style={{ alignSelf: 'stretch', borderBottomWidth: 1, borderTopWidth: 1, borderColor: '#fff', padding: 15 }}>
-                    <Text style={{ color: '#fff' }}>Order History</Text>    
+                <TouchableOpacity style={buttonStyle}>
+                    <Text style={textStyle}>Order History</Text>    
                 </TouchableOpacity> 
-                <TouchableOpacity style={{ alignSelf: 'stretch', borderBottomWidth: 1, borderColor: '#fff', padding: 15 }}>
-                    <Text style={{ color: '#fff' }}>Change Info</Text>    
+                <TouchableOpacity style={buttonStyle}>
+                    <Text style={textStyle}>Change Info</Text>    
                 </TouchableOpacity>    
-                <TouchableOpacity style={{ alignSelf: 'stretch', borderBottomWidth: 1, borderColor: '#fff', padding: 15 }}>
-                    <Text style={{ color: '#fff' }}>Shipping Address</Text>    
+                <TouchableOpacity style={buttonStyle}>
+                    <Text style={textStyle}>Shipping Address</Text>    
                 </TouchableOpacity> 
-                <TouchableOpacity style={{ alignSelf: 'stretch', borderBottomWidth: 1, borderColor: '#fff', padding: 15 }}>
-                    <Text style={{ color: '#fff' }}>Sign out</Text>    
+                <TouchableOpacity style={buttonStyle}>
+                    <Text style={textStyle}>Sign out</Text>    
                 </TouchableOpacity>      
             </View>
         );
@@ -35,9 +36,23 @@ class Menu extends Component {
 
 const styles = StyleSheet.create({
     menuContainer: {
-        backgroundColor: '#002B36',
+        backgroundColor: '#2ABB9C',
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRightWidth: 3,
+        borderColor: '#FFF'
+    },
+    buttonStyle: {
+         alignSelf: 'stretch', 
+         backgroundColor: '#fff', 
+         padding: 15,
+         borderRadius: 10,
+         margin: 5
+    },
+    textStyle: {
+        fontFamily: 'Avenir', 
+        fontSize: 15,
+        color: '#2ABB9C'
     }
 });
 
