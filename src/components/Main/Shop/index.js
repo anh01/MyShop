@@ -19,6 +19,29 @@ import contactIcon0 from '../../../media/appIcon/contact0.png';
 
 const { saveCart, getCart } = require('../../../api/saveCart');
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    body: {
+        flex: 7,
+        backgroundColor: 'transparent'
+    },
+    navIconStyle: {
+        width: 25,
+        height: 25
+    },
+    selectedStyle: { 
+        color: '#2ABB9C', 
+        fontWeight: 'bold',
+        fontFamily: 'Avenir' 
+    },
+    titleStyle: {
+        fontFamily: 'Avenir' 
+    }
+});
+
+
 export default class Shop extends Component {
     constructor(props) {
         super(props);
@@ -152,24 +175,3 @@ export default class Shop extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    body: {
-        flex: 7,
-        backgroundColor: 'transparent'
-    },
-    navIconStyle: {
-        width: 25,
-        height: 25
-    },
-    selectedStyle: { 
-        color: '#2ABB9C', 
-        fontWeight: 'bold',
-        fontFamily: 'Avenir' 
-    },
-    titleStyle: {
-        fontFamily: 'Avenir' 
-    }
-});

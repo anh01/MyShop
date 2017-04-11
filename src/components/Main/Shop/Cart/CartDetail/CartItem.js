@@ -3,6 +3,10 @@ import { View, Image, TouchableOpacity, Text, Dimensions, StyleSheet } from 'rea
 
 const url = 'http://app.nhodalat.com/image/';
 
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+}
+
 class CartItem extends Component {
     gotoDetail(product) {
         const { navigator } = this.props;
@@ -22,7 +26,7 @@ class CartItem extends Component {
                 <Image source={{ uri: `${url}${images[0]}` }} style={productImage} />
                 <View style={[mainRight]}>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-                        <Text style={txtName}>{name.toUpperCase()}</Text>
+                        <Text style={txtName}>{toTitleCase(name)}</Text>
                         <TouchableOpacity onPress={() => remove(id)}>
                             <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>X</Text>
                         </TouchableOpacity>

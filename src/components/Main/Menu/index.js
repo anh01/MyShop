@@ -26,7 +26,7 @@ class Menu extends Component {
                 <TouchableOpacity style={buttonStyle}>
                     <Text style={textStyle}>Shipping Address</Text>    
                 </TouchableOpacity> 
-                <TouchableOpacity style={buttonStyle}>
+                <TouchableOpacity style={buttonStyle} onPress={this.gotoAuthentication.bind(this)}>
                     <Text style={textStyle}>Sign out</Text>    
                 </TouchableOpacity>      
             </View>
