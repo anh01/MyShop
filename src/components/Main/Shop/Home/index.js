@@ -8,7 +8,7 @@ class Home extends Component {
     renderScene(route, navigator) {
         const { addProduct } = this.props;
         if (route.name === 'PRODUCT_DETAIL') return <ProductDetail navigator={navigator} product={route.product} addProduct={addProduct} />;
-        if (route.name === 'LIST_PRODUCT') return <ListProduct navigator={navigator} idList={route.idList} addProduct={addProduct} />;
+        if (route.name === 'LIST_PRODUCT') return <ListProduct navigator={navigator} category={route.category} addProduct={addProduct} />;
         return <HomePage navigator={navigator} />;
     }
     render() {

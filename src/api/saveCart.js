@@ -11,10 +11,10 @@ const saveCart = async (cartState) => {
 const getCart = async () => {
     try {
         const arr = await AsyncStorage.getItem('@cart');
-        return arr || [];
+        return JSON.parse(arr) || [];
     } catch (error) {
         return [];
     }
 };
 
-export default { saveCart, getCart };
+module.exports = { saveCart, getCart };

@@ -17,6 +17,8 @@ import searchIcon0 from '../../../media/appIcon/search0.png';
 import contactIcon from '../../../media/appIcon/contact.png';
 import contactIcon0 from '../../../media/appIcon/contact0.png';
 
+const { saveCart, getCart } = require('../../../api/saveCart');
+
 export default class Shop extends Component {
     constructor(props) {
         super(props);
@@ -25,12 +27,15 @@ export default class Shop extends Component {
             arrCartItems: [],
             arrSearch: [] 
         };
+        this.saveCart = this.saveCart.bind(this);
     }
 
     //component did mount adn goToHome function will be used in another component. 
     componentDidMount() {
         global.goToHome = this.goToHome.bind(this);
         global.goToSearch = this.goToSearch.bind(this);
+        getCart()
+        .then(arrCart => this.setState({ ...this.state, arrCartItems: arrCart }));
     }
 
     setArrSearch(arrSearch) {
@@ -45,37 +50,41 @@ export default class Shop extends Component {
         this.setState({ ...this.state, selectedTab: 'search' });
     }
     
+    saveCart() {
+        saveCart(this.state.arrCartItems);
+    }
+
     incrQuantityProduct(productId) {
         const item = this.state.arrCartItems.find(e => e.product.id === productId);
         item.quantity++;
-        this.setState(this.state);
+        this.setState(this.state, this.saveCart);
     }
 
     decrQuantityProduct(productId) {
         const item = this.state.arrCartItems.find(e => e.product.id === productId);
         item.quantity--;
-        this.setState(this.state);
+        this.setState(this.state, this.saveCart);
     }
 
     removeProduct(productId) {
         this.setState({ 
             ...this.state, 
             arrCartItems: this.state.arrCartItems.filter(item => item.product.id !== productId) 
-        });
+        }, this.saveCart);
     }
 
     addProduct(product) {
         this.setState({ 
             ...this.state, 
             arrCartItems: [...this.state.arrCartItems, { product, quantity: 1 }]
-        });
+        }, this.saveCart);
     }
 
     removeAll() {
         this.setState({ 
             ...this.state, 
             arrCartItems: []
-        });
+        }, this.saveCart);
     }
 
     render() {

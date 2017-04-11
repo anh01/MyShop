@@ -18,17 +18,18 @@ class ListProduct extends Component {
         };
     }
     componentDidMount() {
-        getList(4, 1)
-        .then(arrProduct => this.setState({ ...this.state, dataSource: this.state.dataSource.cloneWithRows(arrProduct), mang: arrProduct }));
+        const { id } = this.props.category;
+        getList(id, 1)
+        .then(arrProduct => this.setState({ ...this.state, dataSource: this.state.dataSource.cloneWithRows(arrProduct), mang: arrProduct }));// eslint-disable-line
     }   
 
     onRefresh() {
+        const { id } = this.props.category;
         this.setState({
             ...this.state,
             refreshing: true    
         });
-        console.log('REFRESHING!!!');
-        getList(3, this.state.page + 1)
+        getList(id, this.state.page + 1)
         .then(arrProduct => this.setState({ 
             ...this.state, 
             dataSource: this.state.dataSource.cloneWithRows(arrProduct.concat(this.state.mang)),
@@ -39,8 +40,9 @@ class ListProduct extends Component {
     }
 
     render() {
-        const { navigator } = this.props;
+        const { navigator, category } = this.props;
         const { wrapper } = styles;
+        const { name } = category;
         return (
             <View style={{ flex: 1, backgroundColor: '#F6F6F6' }}>
                 <View style={wrapper}>
@@ -51,7 +53,7 @@ class ListProduct extends Component {
                             <Image source={backIcon} style={{ width: 30, height: 30, marginLeft: 10 }} />
                         </TouchableOpacity>
                         <View style={{ flex: 2, alignItems: 'center' }}>
-                            <Text style={{ fontFamily: 'Avenir', fontSize: 20, margin: 20, color: '#C21C70' }}>MIDI DRESS</Text>
+                            <Text style={{ fontFamily: 'Avenir', fontSize: 20, margin: 20, color: '#C21C70' }}>{name}</Text>
                         </View>
                         <View style={{ flex: 1 }}>
 

@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Image, Text, StyleSheet, Dimensions } from 'react-native';
 
 class CategoryItem extends Component {
-    goToListProduct(idList) {
+    goToListProduct(category) {
         //This navigator is start ad ./Home/index.js
         const { navigator } = this.props;
-        navigator.push({ name: 'LIST_PRODUCT', idList });
+        navigator.push({ name: 'LIST_PRODUCT', category });
     }
     render() {
         const { imageStyle, textStyle } = styles;
-        const { image, id, name } = this.props.category;
+        const { image, name } = this.props.category;
         return (
-            <TouchableOpacity onPress={() => this.goToListProduct(id)}>
+            <TouchableOpacity onPress={() => this.goToListProduct(this.props.category)}>
                 <Image style={imageStyle} source={{ uri: `http://app.nhodalat.com/image/types/${image}` }}>
                     <Text style={textStyle}>{name}</Text>
                 </Image>

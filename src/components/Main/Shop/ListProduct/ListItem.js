@@ -3,6 +3,10 @@ import { View, Image, TouchableOpacity, Text, Dimensions, StyleSheet } from 'rea
 
 const url = 'http://app.nhodalat.com/image/';
 
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+}
+
 class SearchPageItem extends Component {
     gotoDetail(product) {
         const { navigator } = this.props;
@@ -19,7 +23,7 @@ class SearchPageItem extends Component {
             <View style={productStyle}>
                 <Image source={{ uri: `${url}${images[0]}` }} style={productImage} />
                 <View style={mainRight}>
-                    <Text style={txtName}>{name}</Text>
+                    <Text style={txtName}>{toTitleCase(name)}</Text>
                     <Text style={txtPrice}>{price}$</Text>
                     <Text style={txtMaterial}>Material {material}</Text>
                     <View style={{ flexDirection: 'row' }} >
