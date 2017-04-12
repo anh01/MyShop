@@ -3,6 +3,26 @@ import { View, Text, TextInput, TouchableOpacity, Dimensions, StyleSheet } from 
 
 const { width } = Dimensions.get('window');
 
+class SignIn extends Component {
+    render() {
+        return (
+            <View style={styles.signInStyle}>
+                <TextInput
+                    style={styles.textInput}
+                    placeholder="Enter your email"
+                />
+                <TextInput
+                    style={styles.textInput}
+                    placeholder="Enter your Password"
+                />
+                <TouchableOpacity style={styles.signInContainer}>
+                    <Text style={styles.signInTextStyle}>SIGN IN NOW</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+}
+
 const styles = StyleSheet.create({
     textInput: {
         width: width - 80,
@@ -30,25 +50,5 @@ const styles = StyleSheet.create({
         marginTop: 50
     }
 });
-
-class SignIn extends Component {
-    render() {
-        return (
-            <View style={styles.signInStyle}>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Enter your email"
-                />
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Enter your Password"
-                />
-                <TouchableOpacity style={styles.signInContainer}>
-                    <Text style={styles.signInTextStyle}>SIGN IN NOW</Text>
-                </TouchableOpacity>
-            </View>
-        );
-    }
-}
 
 export default SignIn;

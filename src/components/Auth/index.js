@@ -4,6 +4,7 @@ import {
     TouchableOpacity, Dimensions
 } from 'react-native';
 import logo from '../../media/appIcon/ic_logo.png';
+import backIcon from '../../media/appIcon/back_white.png';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
@@ -27,6 +28,9 @@ export default class Authentication extends Component {
         return (
             <View style={wrapper}>
                 <View style={header}>
+                    <TouchableOpacity onPress={() => this.props.navigator.pop()}>
+                        <Image source={backIcon} style={{ height: 30, width: 30 }} />
+                    </TouchableOpacity>
                     <Text style={textLogo}>Wearing a Dress</Text>
                     <Image source={logo} style={{ height: 30, width: 30 }} />
                 </View>
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
     header: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center'
     },
     main: {
