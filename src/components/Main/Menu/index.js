@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import profile from '../../../media/temp/profile.jpg';
+import profile from '../../../media/temp/profile.png';
 
 class Menu extends Component {
     gotoAuthentication() {
