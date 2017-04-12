@@ -4,15 +4,21 @@ import {
 } from 'react-native';
 import Main from './Main';
 import Authentication from './Auth';
-import UserArea from './UserArea/UserArea';
+import OrderHistory from './UserArea/OrderHistory';
+import UserInfo from './UserArea/UserInfo';
+import ShippingInfo from './UserArea/ShippingInfo';
 
 StatusBar.setHidden(true);
 
 const renderScene = (route, navigator) => {
     if (route.name === 'MAIN') return <Main navigator={navigator} />;
-    if (route.name === 'USER') return <UserArea />;
+    if (route.name === 'ORDER') return <OrderHistory navigator={navigator} />;
+    if (route.name === 'USER_INFO') return <UserInfo navigator={navigator} />;
+    if (route.name === 'SHIPPING_INFO') return <ShippingInfo navigator={navigator} />;
     return <Authentication navigator={navigator} />;
 };
+
+const arrUserArea = ['ORDER', 'USER_INFO', 'SHIPPING_INFO'];
 
 export default class App extends Component {
     render() {
@@ -22,7 +28,7 @@ export default class App extends Component {
                     initialRoute={{ name: 'MAIN' }}
                     renderScene={renderScene}
                     configureScene={(route) => {
-                        if (route.name === 'USER') return Navigator.SceneConfigs.FloatFromLeft;
+                        if (arrUserArea.indexOf(route.name) !== -1) return Navigator.SceneConfigs.FloatFromLeft;
                         return Navigator.SceneConfigs.FloatFromRight;
                     }}
                 />

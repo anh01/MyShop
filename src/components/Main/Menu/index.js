@@ -8,9 +8,19 @@ class Menu extends Component {
         navigator.push({ name: 'AUTH' });
     }
 
-    gotoUserArea() {
+    gotoOrder() {
         const { navigator } = this.props;
-        navigator.push({ name: 'USER' });
+        navigator.push({ name: 'ORDER' });
+    }
+
+    gotoChangeInfo() {
+        const { navigator } = this.props;
+        navigator.push({ name: 'USER_INFO' });
+    }
+
+    gotoShippingInfo() {
+        const { navigator } = this.props;
+        navigator.push({ name: 'SHIPPING_INFO' });
     }
 
     render() {
@@ -23,14 +33,14 @@ class Menu extends Component {
                 <View style={{ marginBottom: 130 }}>
                     <Text style={[textStyle, { color: '#fff' }]}>Pham Truong Dang Khoa</Text>
                 </View>  
-                <TouchableOpacity style={buttonStyle} onPress={this.gotoUserArea.bind(this)}>
+                <TouchableOpacity style={buttonStyle} onPress={this.gotoOrder.bind(this)}>
                     <Text style={textStyle}>Order History</Text>    
                 </TouchableOpacity> 
-                <TouchableOpacity style={buttonStyle}>
+                <TouchableOpacity style={buttonStyle} onPress={this.gotoChangeInfo.bind(this)}>
                     <Text style={textStyle}>Change Info</Text>    
                 </TouchableOpacity>    
-                <TouchableOpacity style={buttonStyle}>
-                    <Text style={textStyle}>Shipping Address</Text>    
+                <TouchableOpacity style={buttonStyle} onPress={this.gotoShippingInfo.bind(this)}>
+                    <Text style={textStyle}>Change Shipping</Text>    
                 </TouchableOpacity> 
                 <TouchableOpacity style={buttonStyle} onPress={this.gotoAuthentication.bind(this)}>
                     <Text style={textStyle}>Sign out</Text>    
