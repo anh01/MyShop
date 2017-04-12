@@ -7,6 +7,12 @@ class Menu extends Component {
         const { navigator } = this.props;
         navigator.push({ name: 'AUTH' });
     }
+
+    gotoUserArea() {
+        const { navigator } = this.props;
+        navigator.push({ name: 'USER' });
+    }
+
     render() {
         const { buttonStyle, textStyle } = styles;
         return (
@@ -17,7 +23,7 @@ class Menu extends Component {
                 <View style={{ marginBottom: 130 }}>
                     <Text style={[textStyle, { color: '#fff' }]}>Pham Truong Dang Khoa</Text>
                 </View>  
-                <TouchableOpacity style={buttonStyle}>
+                <TouchableOpacity style={buttonStyle} onPress={this.gotoUserArea.bind(this)}>
                     <Text style={textStyle}>Order History</Text>    
                 </TouchableOpacity> 
                 <TouchableOpacity style={buttonStyle}>

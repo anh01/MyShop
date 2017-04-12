@@ -4,11 +4,13 @@ import {
 } from 'react-native';
 import Main from './Main';
 import Authentication from './Auth';
+import UserArea from './UserArea/UserArea';
 
 StatusBar.setHidden(true);
 
 const renderScene = (route, navigator) => {
     if (route.name === 'MAIN') return <Main navigator={navigator} />;
+    if (route.name === 'USER') return <UserArea />;
     return <Authentication navigator={navigator} />;
 };
 
@@ -19,6 +21,10 @@ export default class App extends Component {
                 <Navigator 
                     initialRoute={{ name: 'MAIN' }}
                     renderScene={renderScene}
+                    configureScene={(route) => {
+                        if (route.name === 'USER') return Navigator.SceneConfigs.FloatFromLeft;
+                        return Navigator.SceneConfigs.FloatFromRight;
+                    }}
                 />
             </View>
         );
