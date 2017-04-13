@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
 import signIn from '../../api/signIn';
+import saveToken from '../../api/saveToken';
 
 const { width } = Dimensions.get('window');
 
@@ -13,6 +14,7 @@ class SignIn extends Component {
         const { email, password } = this.state;
         try {
             const { token, user } = await signIn(email, password);
+            saveToken(token);
             console.log(token, user);
         } catch (e) {
             console.log('LOI: ', e);

@@ -8,10 +8,6 @@ class Menu extends Component {
         this.state = { user: null };
     }
 
-    componentDidMount() {
-        
-    }
-
     gotoAuthentication() {
         const { navigator } = this.props;
         navigator.push({ name: 'AUTH' });
@@ -34,28 +30,40 @@ class Menu extends Component {
 
     render() {
         const { buttonStyle, textStyle } = styles;
-        return (
+        const signedInJSX = (
             <View style={styles.menuContainer}>
                 <View style={{ padding: 20 }}>
                     <Image source={profile} style={{ width: 100, height: 100, borderRadius: 50 }} />
-                </View>  
+                </View>
                 <View style={{ marginBottom: 130 }}>
                     <Text style={[textStyle, { color: '#fff' }]}>Pham Truong Dang Khoa</Text>
-                </View>  
+                </View>
                 <TouchableOpacity style={buttonStyle} onPress={this.gotoOrder.bind(this)}>
-                    <Text style={textStyle}>Order History</Text>    
-                </TouchableOpacity> 
+                    <Text style={textStyle}>Order History</Text>
+                </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={this.gotoChangeInfo.bind(this)}>
-                    <Text style={textStyle}>Change Info</Text>    
-                </TouchableOpacity>    
+                    <Text style={textStyle}>Change Info</Text>
+                </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={this.gotoShippingInfo.bind(this)}>
-                    <Text style={textStyle}>Change Shipping Info</Text>    
-                </TouchableOpacity> 
+                    <Text style={textStyle}>Change Shipping Info</Text>
+                </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={this.gotoAuthentication.bind(this)}>
-                    <Text style={textStyle}>Sign out</Text>    
-                </TouchableOpacity>      
+                    <Text style={textStyle}>Sign out</Text>
+                </TouchableOpacity>
             </View>
         );
+        const unsignedInJSX = (
+            <View style={styles.menuContainer}>
+                <View style={{ padding: 20 }}>
+                    <Image source={profile} style={{ width: 100, height: 100, borderRadius: 50 }} />
+                </View>
+                <TouchableOpacity style={[buttonStyle, { alignSelf: 'stretch', marginHorizontal: 10, alignItems: 'center' }]} onPress={this.gotoAuthentication.bind(this)}>
+                    <Text style={textStyle}>SIGN IN</Text>
+                </TouchableOpacity>
+            </View>
+        );
+        const show = this.state.user ? signedInJSX : unsignedInJSX;
+        return show;
     }
 }
 
@@ -68,14 +76,14 @@ const styles = StyleSheet.create({
         borderColor: '#FFF'
     },
     buttonStyle: {
-         alignSelf: 'stretch', 
-         backgroundColor: '#fff', 
-         padding: 15,
-         borderRadius: 10,
-         margin: 5
+        alignSelf: 'stretch',
+        backgroundColor: '#fff',
+        padding: 15,
+        borderRadius: 10,
+        margin: 5
     },
     textStyle: {
-        fontFamily: 'Avenir', 
+        fontFamily: 'Avenir',
         fontSize: 15,
         color: '#2ABB9C'
     }
