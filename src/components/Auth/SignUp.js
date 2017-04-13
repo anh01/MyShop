@@ -14,14 +14,6 @@ class SignUp extends Component {
                 />
                 <TextInput
                     style={textInput}
-                    placeholder="Enter your phone number"
-                />
-                <TextInput
-                    style={textInput}
-                    placeholder="Enter your address"
-                />
-                <TextInput
-                    style={textInput}
                     placeholder="Enter your email"
                 />
                 <TextInput

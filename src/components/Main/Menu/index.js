@@ -40,7 +40,7 @@ class Menu extends Component {
                     <Text style={textStyle}>Change Info</Text>    
                 </TouchableOpacity>    
                 <TouchableOpacity style={buttonStyle} onPress={this.gotoShippingInfo.bind(this)}>
-                    <Text style={textStyle}>Change Shipping</Text>    
+                    <Text style={textStyle}>Change Shipping Info</Text>    
                 </TouchableOpacity> 
                 <TouchableOpacity style={buttonStyle} onPress={this.gotoAuthentication.bind(this)}>
                     <Text style={textStyle}>Sign out</Text>    

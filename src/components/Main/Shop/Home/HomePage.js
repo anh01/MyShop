@@ -35,9 +35,7 @@ export default class HomePage extends Component {
         const loading = <ActivityIndicator style={{ paddingTop: 300 }} />;
         const main = (
             <View>
-                <TouchableOpacity>
-                    <Card />
-                </TouchableOpacity>
+                <Card />
                 <ListCategory navigator={navigator} data={this.state.listCategory} />
                 <ListProductHome navigator={navigator} data={this.state.listProduct} />
             </View>

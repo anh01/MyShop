@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 const banner = require('../../../../media/temp/banner.jpg');
 
 export default class Shop extends Component {
+  gotoCollection(category) {
+        //This navigator is start ad ./Home/index.js
+        const { navigator } = this.props;
+        navigator.push({ name: 'LIST_PRODUCT', category });
+  }
   render() {
     return (
       <View style={styles.wrapper}>
         <View style={styles.header}>
           <Text style={styles.title}>SPRING COLLECTION</Text>
         </View>
-        <View style={styles.body}>
+        <TouchableOpacity style={styles.body}>
           <Image source={banner} style={styles.image} />
-        </View>
+        </TouchableOpacity>
       </View>
     );
   }

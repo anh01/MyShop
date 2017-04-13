@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Navigator } from 'react-native';
 import CardDetail from './CartDetail';
-import Checkout from './Checkout';
 import ProductDetail from '../ProductDetail';
-
-
 
 class Cart extends Component {
     renderScene(route, navigator) {
         const { data, controller } = this.props;
-        if (route.name === 'CART_DETAIL') return <CardDetail navigator={navigator} data={data} controller={controller} />;
-        if (route.name === 'PRODUCT_DETAIL') return <ProductDetail navigator={navigator} product={route.product} />;
-        return <Checkout navigator={navigator} />;
+        if (route.name === 'CART_DETAIL') return <CardDetail navigator={navigator} data={data} controller={controller} />;// eslint-disable-line
+        return <ProductDetail navigator={navigator} product={route.product} />;
     }
     render() {
         return (

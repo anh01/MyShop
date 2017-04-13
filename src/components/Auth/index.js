@@ -45,7 +45,6 @@ export default class Authentication extends Component {
                             <Text style={[{ fontFamily: 'Avenir' }, styleSignUp]}>SIGN UP</Text>
                         </TouchableOpacity>
                     </View>
-                    <Text style={{ color: '#FFF', fontFamily: 'Avenir' }}>Forgot your password</Text>
                 </View>
             </View>
         );

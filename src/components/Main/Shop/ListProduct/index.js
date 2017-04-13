@@ -74,7 +74,7 @@ class ListProduct extends Component {
         );
     }
 }
-//{this.state.arrProduct.map(e => <ListItem navigator={navigator} key={e.id} product={e} />)}
+
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
@@ -89,3 +89,9 @@ const styles = StyleSheet.create({
 });
 
 export default ListProduct;
+
+// {
+//     "name": "Pho",
+//     "mail": "vanpho01@gmail.com",
+//     "password": "xxx"
+// }
