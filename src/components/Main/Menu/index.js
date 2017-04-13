@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import profile from '../../../media/temp/profile.png';
+import global from '../../global';
 
 class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = { user: null };
+        global.setUser = this.setUserState.bind(this);
+    }
+
+    setUserState(user) {
+        this.setState({ ...this.state, user });
     }
 
     gotoAuthentication() {

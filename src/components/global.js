@@ -1,4 +1,5 @@
 export default { 
     goToHome: null,
-    goToSearch: null
+    goToSearch: null,
+    setUser: null
 };
