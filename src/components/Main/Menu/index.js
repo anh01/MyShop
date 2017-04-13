@@ -36,13 +36,14 @@ class Menu extends Component {
 
     render() {
         const { buttonStyle, textStyle } = styles;
+        const { user } = this.state;
         const signedInJSX = (
             <View style={styles.menuContainer}>
                 <View style={{ padding: 20 }}>
                     <Image source={profile} style={{ width: 100, height: 100, borderRadius: 50 }} />
                 </View>
                 <View style={{ marginBottom: 130 }}>
-                    <Text style={[textStyle, { color: '#fff' }]}>Pham Truong Dang Khoa</Text>
+                    <Text style={[textStyle, { color: '#fff' }]}>{ user ? user.name : null }</Text>
                 </View>
                 <TouchableOpacity style={buttonStyle} onPress={this.gotoOrder.bind(this)}>
                     <Text style={textStyle}>Order History</Text>

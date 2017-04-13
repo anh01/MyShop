@@ -17,11 +17,11 @@ export default class Authentication extends Component {
         const {
             wrapper, main, header, controller, textLogo, controllerLeft, controllerRight
         } = styles;
-
+        const { navigator } = this.props;
         const { signIn } = this.state;
         const styleSignIn = signIn ? { color: '#39C48C', fontWeight: '600' } : { color: '#DADADA' };
         const styleSignUp = !signIn ? { color: '#39C48C', fontWeight: '600' } : { color: '#DADADA' };
-        const mainJSX = signIn ? <SignIn /> : <SignUp />;
+        const mainJSX = signIn ? <SignIn navigator={navigator} /> : <SignUp navigator={navigator} />;
         return (
             <View style={wrapper}>
                 <View style={header}>

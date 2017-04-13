@@ -13,10 +13,12 @@ class SignIn extends Component {
     }
     async onSignIn() {
         const { email, password } = this.state;
+        const { navigator } = this.props;
         try {
             const { token, user } = await signIn(email, password);
             saveToken(token);
             global.setUser(user);
+            navigator.pop();
         } catch (e) {
             console.log('LOI: ', e);
         }
