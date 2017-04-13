@@ -123,7 +123,7 @@ export default class Shop extends Component {
             <View style={container}>
                 <TopBar open={this.props.open} setArrSearch={this.setArrSearch.bind(this)} />
                 <View style={body}>
-                    <TabNavigator>
+                    <TabNavigator tabBarStyle={{ height: 55 }}>
                         <TabNavigator.Item
                             titleStyle={styles.titleStyle}
                             selectedTitleStyle={styles.selectedStyle}
@@ -142,6 +142,7 @@ export default class Shop extends Component {
                             renderSelectedIcon={() => <Image style={navIconStyle} source={cartIcon} />}
                             selected={this.state.selectedTab === 'cart'}
                             title="Cart"
+                            badgeText={this.state.arrCartItems.length}
                             onPress={() => this.setState({ ...this.state, selectedTab: 'cart' })}
                         >
                             <Cart data={arrCartItems} controller={controller} />
