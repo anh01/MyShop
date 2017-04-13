@@ -174,4 +174,3 @@ export default class Shop extends Component {
         );
     }
 }
-
