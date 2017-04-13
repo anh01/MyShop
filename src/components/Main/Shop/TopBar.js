@@ -18,7 +18,6 @@ export default class TopBar extends Component {
     }
 
     getProductBySearch() {
-        console.log('____________ABCD______');
         const { text } = this.state;
         searchProduct(text)
         .then(res => {

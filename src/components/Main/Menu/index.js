@@ -3,6 +3,15 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import profile from '../../../media/temp/profile.png';
 
 class Menu extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { user: null };
+    }
+
+    componentDidMount() {
+        
+    }
+
     gotoAuthentication() {
         const { navigator } = this.props;
         navigator.push({ name: 'AUTH' });

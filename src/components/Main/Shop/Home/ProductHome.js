@@ -11,7 +11,6 @@ class ProductHome extends Component {
     render() {
         const { product, productImage, productFooter, productName, productPrice } = styles;
         const { images, name, price } = this.props.product;
-        console.log(this.props.product);
         return (
             <TouchableOpacity style={product} onPress={() => this.goToProductDetail(this.props.product)}>
                 <Image style={productImage} source={{ uri: `http://app.nhodalat.com/image/${images[0]}` }} />

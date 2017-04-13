@@ -1,15 +1,15 @@
-const url = 'http://app.nhodala.com/dangnhap.php';
-const getOption = (username, password) => ({
+const url = 'http://app.nhodalat.com/dangnhap.php';
+const getOption = (email, password) => ({
     method: 'POST',
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ username, password })
+    body: JSON.stringify({ email, password })
 });
 
-const signIn = (username, password) => (
-    fetch(url, getOption(username, password)) // eslint-disable-line
+const signIn = (email, password) => (
+    fetch(url, getOption(email, password)) // eslint-disable-line
     .then(res => res.json())
 );
 

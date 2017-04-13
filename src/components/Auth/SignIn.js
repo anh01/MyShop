@@ -1,21 +1,40 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import signIn from '../../api/signIn';
 
 const { width } = Dimensions.get('window');
 
 class SignIn extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { email: '', password: '' };
+    }
+    async onSignIn() {
+        const { email, password } = this.state;
+        try {
+            const { token, user } = await signIn(email, password);
+            console.log(token, user);
+        } catch (e) {
+            console.log('LOI: ', e);
+        }
+    }
     render() {
         return (
             <View style={styles.signInStyle}>
                 <TextInput
                     style={styles.textInput}
                     placeholder="Enter your email"
+                    onChangeText={email => this.setState({ ...this.state, email })}
+                    autoCapitalize="none"
                 />
                 <TextInput
                     style={styles.textInput}
                     placeholder="Enter your Password"
+                    onChangeText={password => this.setState({ ...this.state, password })}
+                    secureTextEntry
+                    autoCapitalize="none"
                 />
-                <TouchableOpacity style={styles.signInContainer}>
+                <TouchableOpacity style={styles.signInContainer} onPress={this.onSignIn.bind(this)}>
                     <Text style={styles.signInTextStyle}>SIGN IN NOW</Text>
                 </TouchableOpacity>
             </View>
