@@ -8,15 +8,20 @@ class Menu extends Component {
         super(props);
         this.state = { user: null };
         global.setUser = this.setUserState.bind(this);
+        global.getUser = this.getUser.bind(this);
+    }
+
+    getUser() {
+        return this.state.user;
+    }
+
+    setUserState(user) {
+        this.setState({ ...this.state, user });
     }
 
     signOut() {
         global.setUser(null);
         AsyncStorage.removeItem('@token');
-    }
-
-    setUserState(user) {
-        this.setState({ ...this.state, user });
     }
 
     gotoAuthentication() {
@@ -32,11 +37,6 @@ class Menu extends Component {
     gotoChangeInfo() {
         const { navigator } = this.props;
         navigator.push({ name: 'USER_INFO' });
-    }
-
-    gotoShippingInfo() {
-        const { navigator } = this.props;
-        navigator.push({ name: 'SHIPPING_INFO' });
     }
 
     render() {
@@ -55,9 +55,6 @@ class Menu extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={this.gotoChangeInfo.bind(this)}>
                     <Text style={textStyle}>Change Info</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={buttonStyle} onPress={this.gotoShippingInfo.bind(this)}>
-                    <Text style={textStyle}>Change Shipping Info</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={this.signOut.bind(this)}>
                     <Text style={textStyle}>Sign out</Text>

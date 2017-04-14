@@ -6,7 +6,6 @@ import Main from './Main';
 import Authentication from './Auth';
 import OrderHistory from './UserArea/OrderHistory';
 import UserInfo from './UserArea/UserInfo';
-import ShippingInfo from './UserArea/ShippingInfo';
 
 StatusBar.setHidden(true);
 
@@ -14,7 +13,6 @@ const renderScene = (route, navigator) => {
     if (route.name === 'MAIN') return <Main navigator={navigator} />;
     if (route.name === 'ORDER') return <OrderHistory navigator={navigator} />;
     if (route.name === 'USER_INFO') return <UserInfo navigator={navigator} />;
-    if (route.name === 'SHIPPING_INFO') return <ShippingInfo navigator={navigator} />;
     return <Authentication navigator={navigator} />;
 };
 
