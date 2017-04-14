@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import { 
+    View, Text, TextInput, 
+    TouchableOpacity, Dimensions, StyleSheet, Alert 
+} from 'react-native';
 import signIn from '../../api/signIn';
 import saveToken from '../../api/saveToken';
 import global from '../global';
@@ -19,10 +22,36 @@ class SignIn extends Component {
             saveToken(token);
             global.setUser(user);
             navigator.pop();
+            this.showSuccessAlert();
         } catch (e) {
             console.log('LOI: ', e);
+            this.showFailAlert('Your sign in infomation is not valid');
         }
     }
+
+    showSuccessAlert() {
+        const { navigator } = this.props;
+        Alert.alert(
+            'Sign in successfully',
+            'congratulation!',
+            [
+                { text: 'OK', onPress: () => navigator.pop() },
+            ],
+            { cancelable: false }
+        );
+    }
+
+    showFailAlert(notification) {
+        Alert.alert(
+            'Sign in failed',
+            notification,
+            [
+                { text: 'OK', onPress: () => console.log('Ask me later pressed') }
+            ],
+            { cancelable: false }
+        );
+    }
+
     render() {
         return (
             <View style={styles.signInStyle}>

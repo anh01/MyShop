@@ -21,8 +21,10 @@ class SignUp extends Component {
             if (response === 'THANH_CONG') {
                 this.showSuccessAlert();
             } else {
-                this.showFailAlert();
+                this.showFailAlert('Your email has been used!');
             }
+        } else {
+            this.showFailAlert('Check your password again!');
         }
     }
 
@@ -38,10 +40,10 @@ class SignUp extends Component {
         );
     }
 
-    showFailAlert() {
+    showFailAlert(notification) {
         Alert.alert(
             'Sign up fail',
-            'Your email address has been used by other user, please choose another email!',
+            notification,
             [
                 { text: 'OK', onPress: () => console.log('Ask me later pressed') }
             ],
