@@ -13,6 +13,11 @@ export default class Authentication extends Component {
         super(props);
         this.state = { signIn: true };
     }
+
+    gotoSignIn() {
+        this.setState({ ...this.state, signIn: true });
+    }
+
     render() {
         const {
             wrapper, main, header, controller, textLogo, controllerLeft, controllerRight
@@ -21,7 +26,7 @@ export default class Authentication extends Component {
         const { signIn } = this.state;
         const styleSignIn = signIn ? { color: '#39C48C', fontWeight: '600' } : { color: '#DADADA' };
         const styleSignUp = !signIn ? { color: '#39C48C', fontWeight: '600' } : { color: '#DADADA' };
-        const mainJSX = signIn ? <SignIn navigator={navigator} /> : <SignUp navigator={navigator} />;
+        const mainJSX = signIn ? <SignIn navigator={navigator} /> : <SignUp navigator={navigator} gotoSignIn={this.gotoSignIn.bind(this)} />;
         return (
             <View style={wrapper}>
                 <View style={header}>

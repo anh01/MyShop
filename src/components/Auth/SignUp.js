@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import { 
+    View, Text, TextInput, TouchableOpacity, Dimensions, StyleSheet, Alert } from 'react-native';
 import signUp from '../../api/signUp';
 
 class SignUp extends Component {
@@ -13,12 +14,39 @@ class SignUp extends Component {
         };
     }
 
-    onSignUp() {
+    async onSignUp() {
         const { name, email, password, rePassword } = this.state;
         if (password === rePassword) {
-            signUp(email, password, name);
-            //TODO here
+            const response = await signUp(email, password, name);
+            if (response === 'THANH_CONG') {
+                this.showSuccessAlert();
+            } else {
+                this.showFailAlert();
+            }
         }
+    }
+
+    showSuccessAlert() {
+        const { gotoSignIn } = this.props;
+        Alert.alert(
+            'Sign up successfully',
+            'congratulation!',
+            [
+                { text: 'Sign in now', onPress: () => gotoSignIn() },
+            ],
+            { cancelable: false }
+        );
+    }
+
+    showFailAlert() {
+        Alert.alert(
+            'Sign up fail',
+            'Your email address has been used by other user, please choose another email!',
+            [
+                { text: 'OK', onPress: () => console.log('Ask me later pressed') }
+            ],
+            { cancelable: false }
+        );
     }
 
     render() {
@@ -30,24 +58,28 @@ class SignUp extends Component {
                 <TextInput
                     style={textInput}
                     placeholder="Enter your name"
+                    autoCapitalize="none"
                     onChangeText={name => this.setState({ ...this.state, name })}
                 />
                 <TextInput
                     style={textInput}
                     placeholder="Enter your email"
+                    autoCapitalize="none"
                     onChangeText={email => this.setState({ ...this.state, email })}
                 />
                 <TextInput
                     style={textInput}
                     placeholder="Enter your Password"
                     onChangeText={password => this.setState({ ...this.state, password })}
+                    secureTextEntry
                 />
                 <TextInput
                     style={textInput}
                     placeholder="Re-enter your Password"
                     onChangeText={rePassword => this.setState({ ...this.state, rePassword })}
+                    secureTextEntry
                 />
-                <TouchableOpacity style={signInContainer}>
+                <TouchableOpacity style={signInContainer} onPress={this.onSignUp.bind(this)}>
                     <Text style={signInTextStyle}>SIGN UP NOW</Text>
                 </TouchableOpacity>
             </View>

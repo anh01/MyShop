@@ -10,7 +10,7 @@ const getOption = (email, password, name) => ({
 
 const signUp = (email, password, name) => (
     fetch(url, getOption(email, password, name)) // eslint-disable-line
-    .then(res => res.json())
+    .then(res => res.text())
 );
 
 export default signUp;
