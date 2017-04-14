@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import signUp from '../../api/signUp';
 
 class SignUp extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            email: '',
+            password: '',
+            rePassword: ''
+        };
+    }
+
+    onSignUp() {
+        const { name, email, password, rePassword } = this.state;
+        if (password === rePassword) {
+            signUp(email, password, name);
+            //TODO here
+        }
+    }
+
     render() {
         const {
             signInContainer, signInTextStyle, textInput, signInStyle
@@ -11,18 +30,22 @@ class SignUp extends Component {
                 <TextInput
                     style={textInput}
                     placeholder="Enter your name"
+                    onChangeText={name => this.setState({ ...this.state, name })}
                 />
                 <TextInput
                     style={textInput}
                     placeholder="Enter your email"
+                    onChangeText={email => this.setState({ ...this.state, email })}
                 />
                 <TextInput
                     style={textInput}
                     placeholder="Enter your Password"
+                    onChangeText={password => this.setState({ ...this.state, password })}
                 />
                 <TextInput
                     style={textInput}
                     placeholder="Re-enter your Password"
+                    onChangeText={rePassword => this.setState({ ...this.state, rePassword })}
                 />
                 <TouchableOpacity style={signInContainer}>
                     <Text style={signInTextStyle}>SIGN UP NOW</Text>

@@ -12,7 +12,8 @@ const getOption = (token) => ({
 });
 
 const checkAuthentication = async () => {
-    const token = AsyncStorage.getItem('@token');
+    const token = await AsyncStorage.getItem('@token');
+    console.log('TOKEN------', token);
     return fetch(url, getOption(token)) // eslint-disable-line
     .then(res => res.json());
 };

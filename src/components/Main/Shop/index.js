@@ -7,6 +7,7 @@ import Contact from './Contact';
 import Search from './Search';
 import TopBar from './TopBar';
 import global from '../../global';
+import checkSignIn from '../../../api/checkSignIn';
 
 import homeIcon from '../../../media/appIcon/home.png';
 import homeIcon0 from '../../../media/appIcon/home0.png';
@@ -54,11 +55,13 @@ export default class Shop extends Component {
     }
 
     //component did mount adn goToHome function will be used in another component. 
-    componentDidMount() {
+    async componentDidMount() {
         global.goToHome = this.goToHome.bind(this);
         global.goToSearch = this.goToSearch.bind(this);
-        getCart()
-        .then(arrCart => this.setState({ ...this.state, arrCartItems: arrCart }));
+        const arrCart = await getCart();
+        this.setState({ ...this.state, arrCartItems: arrCart });
+        const { token, user } = await checkSignIn();
+        global.setUser(user);
     }
 
     setArrSearch(arrSearch) {
