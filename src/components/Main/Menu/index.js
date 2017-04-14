@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, AsyncStorage } from 'react-native';
 import profile from '../../../media/temp/profile.png';
 import global from '../../global';
 
@@ -8,6 +8,11 @@ class Menu extends Component {
         super(props);
         this.state = { user: null };
         global.setUser = this.setUserState.bind(this);
+    }
+
+    signOut() {
+        global.setUser(null);
+        AsyncStorage.removeItem('@token');
     }
 
     setUserState(user) {
@@ -54,7 +59,7 @@ class Menu extends Component {
                 <TouchableOpacity style={buttonStyle} onPress={this.gotoShippingInfo.bind(this)}>
                     <Text style={textStyle}>Change Shipping Info</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={buttonStyle} onPress={this.gotoAuthentication.bind(this)}>
+                <TouchableOpacity style={buttonStyle} onPress={this.signOut.bind(this)}>
                     <Text style={textStyle}>Sign out</Text>
                 </TouchableOpacity>
             </View>

@@ -60,8 +60,12 @@ export default class Shop extends Component {
         global.goToSearch = this.goToSearch.bind(this);
         const arrCart = await getCart();
         this.setState({ ...this.state, arrCartItems: arrCart });
-        const { token, user } = await checkSignIn();
-        global.setUser(user);
+        try {
+            const { user } = await checkSignIn();
+            global.setUser(user);
+        } catch (e) {
+            console.log(`NO USER HERE: ${e}`);
+        }
     }
 
     setArrSearch(arrSearch) {
