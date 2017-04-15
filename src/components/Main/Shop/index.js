@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, Alert } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import Home from './Home';
 import Cart from './Cart';
@@ -104,10 +104,38 @@ export default class Shop extends Component {
     }
 
     addProduct(product) {
-        this.setState({ 
-            ...this.state, 
-            arrCartItems: [...this.state.arrCartItems, { product, quantity: 1 }]
-        }, this.saveCart);
+        const isExisted = this.state.arrCartItems.some(e => e.product.id === product.id);
+        if (!isExisted) {
+            this.setState({ 
+                ...this.state, 
+                arrCartItems: [...this.state.arrCartItems, { product, quantity: 1 }]
+            }, this.saveCart); 
+            this.showAddedAlert();
+        } else {
+            this.showProductHasAddedAlert();
+        }
+    }
+
+    showProductHasAddedAlert() {
+        Alert.alert(
+            'Add product to ',
+            'This product has been added to cart!',
+            [
+                { text: 'OK', onPress: () => console.log('Ask me later pressed') }
+            ],
+            { cancelable: false }
+        );
+    }
+
+    showAddedAlert() {
+        Alert.alert(
+            'Add product to ',
+            'A new product has been added to cart!',
+            [
+                { text: 'OK', onPress: () => console.log('Ask me later pressed') }
+            ],
+            { cancelable: false }
+        );
     }
 
     removeAll() {
