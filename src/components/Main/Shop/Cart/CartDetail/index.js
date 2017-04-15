@@ -4,14 +4,23 @@ import {
 } from 'react-native';
 import CartItem from './CartItem';
 import global from '../../../../global';
+import makeOrder from '../../../../../api/makeOrder';
 
 export default class CardDetail extends Component {
     gotoCheckout() {
         const { navigator } = this.props;
         navigator.push({ name: 'CHECKOUT' });
     }
+
+    async sendOrder() {
+        const { data, controller } = this.props;
+        const arrayItems = data.map(e => ({ id: e.product.id, quantity: e.quantity }));
+        await makeOrder(arrayItems);
+        global.goToHome();
+        controller.removeAll();
+    }
+
     showAlert() {
-        const { controller } = this.props;
         Alert.alert(
             'Confirm',
             'Do you want to send this order?',
@@ -19,10 +28,7 @@ export default class CardDetail extends Component {
                 { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
                 { 
                     text: 'OK', 
-                    onPress: () => {
-                        global.goToHome();
-                        controller.removeAll();
-                    }
+                    onPress: this.sendOrder
                 },
             ],
             { cancelable: false }
