@@ -15,9 +15,14 @@ export default class CardDetail extends Component {
     async sendOrder() {
         const { data, controller } = this.props;
         const arrayItems = data.map(e => ({ id: e.product.id, quantity: e.quantity }));
-        await makeOrder(arrayItems);
-        global.goToHome();
-        controller.removeAll();
+        console.log(arrayItems);
+        try {
+            await makeOrder(arrayItems);
+            global.goToHome();
+            controller.removeAll();
+        } catch (e) {
+            console.log(`LOI:${e}`);
+        }
     }
 
     showAlert() {
@@ -26,9 +31,9 @@ export default class CardDetail extends Component {
             'Do you want to send this order?',
             [
                 { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-                { 
-                    text: 'OK', 
-                    onPress: this.sendOrder
+                {
+                    text: 'OK',
+                    onPress: this.sendOrder.bind(this)
                 },
             ],
             { cancelable: false }
@@ -40,7 +45,7 @@ export default class CardDetail extends Component {
         //navigator.push({ name: 'CHECKOUT' })
         const { wrapper, main, checkoutButton, checkoutTitle } = styles;
         const { navigator, data, controller } = this.props;
-        const getListCartItem = () => data.map(item => <CartItem navigator={navigator} key={item.product.name} item={item} controller={controller} />);
+        const getListCartItem = () => data.map(item => <CartItem navigator={navigator} key={item.product.name} item={item} controller={controller} />);// eslint-disable-line
         const totalArray = data.map(item => item.product.price * item.quantity);
         const total = totalArray.reduce((a, b) => a + b, 0);
         return (

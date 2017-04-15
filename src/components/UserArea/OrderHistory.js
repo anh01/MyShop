@@ -45,7 +45,7 @@ class OrderHistory extends Component {
 const OrderRow = (props) => {
     const { id, total, status } = props.order;
     const date = props.order.date_order;
-    const statusText = status ? 'Complete' : 'Pending';
+    const statusText = status == 1 ? 'Complete' : 'Pending';// eslint-disable-line
     const { orderRow } = styles;
     return (
         <View style={orderRow}>
