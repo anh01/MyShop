@@ -57,21 +57,21 @@ class UserInfo extends Component {
                         placeholder="Enter your name"
                         autoCapitalize="none"
                         defaultValue={name}
-                        onChangeText={txtName => this.setState({ ...this.state, txtName })}
+                        onChangeText={txtName => this.setState({ txtName })}
                     />
                     <TextInput
                         style={textInput}
                         placeholder="Enter your address"
                         autoCapitalize="none"
                         defaultValue={address}
-                        onChangeText={txtAddress => this.setState({ ...this.state, txtAddress })}
+                        onChangeText={txtAddress => this.setState({ txtAddress })}
                     />
                     <TextInput
                         style={textInput}
                         placeholder="Enter your phone number"
                         autoCapitalize="none"
                         defaultValue={phone}
-                        onChangeText={txtPhone => this.setState({ ...this.state, txtPhone })}
+                        onChangeText={txtPhone => this.setState({ txtPhone })}
                     />
                     <TouchableOpacity style={signInContainer} onPress={this.onChangeInfo.bind(this)}>
                         <Text style={signInTextStyle}>CHANGE YOUR INFOMATION</Text>

@@ -59,7 +59,7 @@ export default class Shop extends Component {
         global.goToHome = this.goToHome.bind(this);
         global.goToSearch = this.goToSearch.bind(this);
         const arrCart = await getCart();
-        this.setState({ ...this.state, arrCartItems: arrCart });
+        this.setState({ arrCartItems: arrCart });
         try {
             const { user } = await checkSignIn();
             global.setUser(user);
@@ -69,15 +69,15 @@ export default class Shop extends Component {
     }
 
     setArrSearch(arrSearch) {
-        this.state = { ...this.state, arrSearch };
+        this.state = { arrSearch };
     }
 
     goToHome() {
-        this.setState({ ...this.state, selectedTab: 'home' });
+        this.setState({ selectedTab: 'home' });
     }
 
     goToSearch() {
-        this.setState({ ...this.state, selectedTab: 'search' });
+        this.setState({ selectedTab: 'search' });
     }
     
     saveCart() {
@@ -98,7 +98,6 @@ export default class Shop extends Component {
 
     removeProduct(productId) {
         this.setState({ 
-            ...this.state, 
             arrCartItems: this.state.arrCartItems.filter(item => item.product.id !== productId) 
         }, this.saveCart);
     }
@@ -107,7 +106,6 @@ export default class Shop extends Component {
         const isExisted = this.state.arrCartItems.some(e => e.product.id === product.id);
         if (!isExisted) {
             this.setState({ 
-                ...this.state, 
                 arrCartItems: [...this.state.arrCartItems, { product, quantity: 1 }]
             }, this.saveCart); 
             this.showAddedAlert();
@@ -140,7 +138,6 @@ export default class Shop extends Component {
 
     removeAll() {
         this.setState({ 
-            ...this.state, 
             arrCartItems: []
         }, this.saveCart);
     }
@@ -166,7 +163,7 @@ export default class Shop extends Component {
                             renderIcon={() => <Image style={navIconStyle} source={homeIcon0} />}
                             renderSelectedIcon={() => <Image style={navIconStyle} source={homeIcon} />}
                             title="Home"
-                            onPress={() => this.setState({ ...this.state, selectedTab: 'home' })}
+                            onPress={() => this.setState({ selectedTab: 'home' })}
                         >
                             <Home addProduct={this.addProduct.bind(this)} />
                         </TabNavigator.Item>
@@ -178,7 +175,7 @@ export default class Shop extends Component {
                             selected={this.state.selectedTab === 'cart'}
                             title="Cart"
                             badgeText={this.state.arrCartItems.length}
-                            onPress={() => this.setState({ ...this.state, selectedTab: 'cart' })}
+                            onPress={() => this.setState({ selectedTab: 'cart' })}
                         >
                             <Cart data={arrCartItems} controller={controller} />
                         </TabNavigator.Item>
@@ -189,7 +186,7 @@ export default class Shop extends Component {
                             renderSelectedIcon={() => <Image style={navIconStyle} source={searchIcon} />}
                             selected={this.state.selectedTab === 'search'}
                             title="Search"
-                            onPress={() => this.setState({ ...this.state, selectedTab: 'search' })}
+                            onPress={() => this.setState({ selectedTab: 'search' })}
                         >
                             <Search addProduct={this.addProduct.bind(this)} arrSearch={this.state.arrSearch} />
                         </TabNavigator.Item>
@@ -200,7 +197,7 @@ export default class Shop extends Component {
                             renderSelectedIcon={() => <Image style={navIconStyle} source={contactIcon} />}
                             selected={this.state.selectedTab === 'contact'}
                             title="Contact"
-                            onPress={() => this.setState({ ...this.state, selectedTab: 'contact' })}
+                            onPress={() => this.setState({ selectedTab: 'contact' })}
                         >
                             <Contact />
                         </TabNavigator.Item>

@@ -15,7 +15,7 @@ export default class Authentication extends Component {
     }
 
     gotoSignIn() {
-        this.setState({ ...this.state, signIn: true });
+        this.setState({ signIn: true });
     }
 
     render() {
@@ -39,11 +39,11 @@ export default class Authentication extends Component {
                 <View style={main}>
                     {mainJSX}
                     <View style={controller}>
-                        <TouchableOpacity style={controllerLeft} onPress={() => this.setState({ ...this.state, signIn: true })}>
+                        <TouchableOpacity style={controllerLeft} onPress={() => this.setState({ signIn: true })}>
                             <Text style={[{ fontFamily: 'Avenir' }, styleSignIn]}>SIGN IN</Text>
                         </TouchableOpacity>
                         <View style={{ backgroundColor: '#39C48C', flex: 0.02 }}></View>
-                        <TouchableOpacity style={controllerRight} onPress={() => this.setState({ ...this.state, signIn: false })}>
+                        <TouchableOpacity style={controllerRight} onPress={() => this.setState({ signIn: false })}>
                             <Text style={[{ fontFamily: 'Avenir' }, styleSignUp]}>SIGN UP</Text>
                         </TouchableOpacity>
                     </View>

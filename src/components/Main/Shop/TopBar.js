@@ -25,7 +25,7 @@ export default class TopBar extends Component {
             global.goToSearch();
         })
         .catch(err => console.log(err))
-        .then(() => this.setState({ ...this.state, text: '' }));
+        .then(() => this.setState({ text: '' }));
     }
 
     render() {

@@ -16,7 +16,7 @@ class Menu extends Component {
     }
 
     setUserState(user) {
-        this.setState({ ...this.state, user });
+        this.setState({ user });
     }
 
     signOut() {

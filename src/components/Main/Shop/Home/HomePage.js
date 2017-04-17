@@ -21,7 +21,6 @@ export default class HomePage extends Component {
         initData()
         .then(res => {
             this.setState({ 
-                ...this.state, 
                 downloading: false, 
                 listCategory: res.type, 
                 listProduct: res.product 

@@ -61,24 +61,24 @@ class SignUp extends Component {
                     style={textInput}
                     placeholder="Enter your name"
                     autoCapitalize="none"
-                    onChangeText={name => this.setState({ ...this.state, name })}
+                    onChangeText={name => this.setState({ name })}
                 />
                 <TextInput
                     style={textInput}
                     placeholder="Enter your email"
                     autoCapitalize="none"
-                    onChangeText={email => this.setState({ ...this.state, email })}
+                    onChangeText={email => this.setState({ email })}
                 />
                 <TextInput
                     style={textInput}
                     placeholder="Enter your Password"
-                    onChangeText={password => this.setState({ ...this.state, password })}
+                    onChangeText={password => this.setState({ password })}
                     secureTextEntry
                 />
                 <TextInput
                     style={textInput}
                     placeholder="Re-enter your Password"
-                    onChangeText={rePassword => this.setState({ ...this.state, rePassword })}
+                    onChangeText={rePassword => this.setState({ rePassword })}
                     secureTextEntry
                 />
                 <TouchableOpacity style={signInContainer} onPress={this.onSignUp.bind(this)}>

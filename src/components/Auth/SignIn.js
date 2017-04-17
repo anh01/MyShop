@@ -58,13 +58,13 @@ class SignIn extends Component {
                 <TextInput
                     style={styles.textInput}
                     placeholder="Enter your email"
-                    onChangeText={email => this.setState({ ...this.state, email })}
+                    onChangeText={email => this.setState({ email })}
                     autoCapitalize="none"
                 />
                 <TextInput
                     style={styles.textInput}
                     placeholder="Enter your Password"
-                    onChangeText={password => this.setState({ ...this.state, password })}
+                    onChangeText={password => this.setState({ password })}
                     secureTextEntry
                     autoCapitalize="none"
                 />

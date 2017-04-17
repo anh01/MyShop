@@ -20,18 +20,14 @@ class ListProduct extends Component {
     componentDidMount() {
         const { id } = this.props.category;
         getList(id, 1)
-        .then(arrProduct => this.setState({ ...this.state, dataSource: this.state.dataSource.cloneWithRows(arrProduct), mang: arrProduct }));// eslint-disable-line
+        .then(arrProduct => this.setState({ dataSource: this.state.dataSource.cloneWithRows(arrProduct), mang: arrProduct }));// eslint-disable-line
     }   
 
     onRefresh() {
         const { id } = this.props.category;
-        this.setState({
-            ...this.state,
-            refreshing: true    
-        });
+        this.setState({ refreshing: true });
         getList(id, this.state.page + 1)
-        .then(arrProduct => this.setState({ 
-            ...this.state, 
+        .then(arrProduct => this.setState({
             dataSource: this.state.dataSource.cloneWithRows(arrProduct.concat(this.state.mang)),
             mang: this.state.mang.concat(arrProduct),
             page: this.state.page + 1,
