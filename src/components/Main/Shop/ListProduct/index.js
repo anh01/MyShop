@@ -89,9 +89,3 @@ const styles = StyleSheet.create({
 });
 
 export default ListProduct;
-
-// {
-//     "name": "Pho",
-//     "mail": "vanpho01@gmail.com",
-//     "password": "xxx"
-// }

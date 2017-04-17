@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { 
-    ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator, View 
+    ScrollView, StyleSheet, ActivityIndicator, View 
 } from 'react-native';
 import Card from './Card';
 import ListCategory from './ListCategory';
@@ -35,7 +35,7 @@ export default class HomePage extends Component {
         const loading = <ActivityIndicator style={{ paddingTop: 300 }} />;
         const main = (
             <View>
-                <Card />
+                <Card navigator={navigator} />
                 <ListCategory navigator={navigator} data={this.state.listCategory} />
                 <ListProductHome navigator={navigator} data={this.state.listProduct} />
             </View>
